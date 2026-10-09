@@ -1,0 +1,592 @@
+/**
+ * WPCalibrate Events Manager - Calendar Frontend Styles
+ * Responsive, accessible, theme-compatible.
+ */
+
+:root {
+	--wpcal-primary: #2271b1;
+	--wpcal-primary-hover: #135e96;
+	--wpcal-bg-light: #f6f7f7;
+	--wpcal-border-color: #dcdcde;
+	--wpcal-text-main: #1d2327;
+	--wpcal-text-muted: #646970;
+	--wpcal-cancelled: #d63638;
+	--wpcal-postponed: #dba617;
+	--wpcal-active: #008a20;
+	--wpcal-today-bg: #f0f6fc;
+	--wpcal-radius: 6px;
+	--wpcal-transition: all 0.2s ease-in-out;
+}
+
+.wpcal-main-calendar-app {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	color: var(--wpcal-text-main);
+	margin: 24px 0;
+	position: relative;
+}
+
+/* View Switcher */
+.wpcal-view-switcher {
+	display: inline-flex;
+	background: var(--wpcal-bg-light);
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	padding: 3px;
+	margin-bottom: 18px;
+}
+.wpcal-view-btn {
+	border: none;
+	background: transparent;
+	padding: 7px 14px;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--wpcal-text-muted);
+	border-radius: 4px;
+	cursor: pointer;
+	transition: var(--wpcal-transition);
+}
+.wpcal-view-btn:hover {
+	color: var(--wpcal-text-main);
+}
+.wpcal-view-btn.active {
+	background: #fff;
+	color: var(--wpcal-primary);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+.wpcal-view-btn:focus-visible {
+	outline: 2px solid var(--wpcal-primary);
+	outline-offset: 1px;
+}
+
+/* Calendar Navigation Toolbar */
+.wpcal-nav-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.wpcal-nav-actions {
+	display: flex;
+	gap: 6px;
+}
+.wpcal-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 7px 14px;
+	border: 1px solid var(--wpcal-border-color);
+	background: #fff;
+	border-radius: var(--wpcal-radius);
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--wpcal-text-main);
+	cursor: pointer;
+	transition: var(--wpcal-transition);
+	text-decoration: none;
+}
+.wpcal-btn:hover {
+	background: var(--wpcal-bg-light);
+	border-color: #8c8f94;
+	color: var(--wpcal-text-main);
+}
+.wpcal-btn:focus-visible {
+	outline: 2px solid var(--wpcal-primary);
+	outline-offset: 2px;
+}
+.wpcal-btn-primary {
+	background: var(--wpcal-primary);
+	border-color: var(--wpcal-primary);
+	color: #fff;
+}
+.wpcal-btn-primary:hover {
+	background: var(--wpcal-primary-hover);
+	border-color: var(--wpcal-primary-hover);
+	color: #fff;
+}
+.wpcal-month-title,
+.wpcal-week-title,
+.wpcal-day-title {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--wpcal-text-main);
+}
+
+/* Month Grid Table */
+.wpcal-month-table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	overflow: hidden;
+	background: #fff;
+}
+.wpcal-month-table th {
+	background: var(--wpcal-bg-light);
+	padding: 10px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--wpcal-text-muted);
+	border-bottom: 1px solid var(--wpcal-border-color);
+	border-right: 1px solid var(--wpcal-border-color);
+}
+.wpcal-month-table th:last-child {
+	border-right: none;
+}
+.wpcal-day-cell {
+	height: 110px;
+	vertical-align: top;
+	padding: 6px;
+	border-right: 1px solid var(--wpcal-border-color);
+	border-bottom: 1px solid var(--wpcal-border-color);
+	position: relative;
+	transition: background 0.15s ease;
+}
+.wpcal-day-cell:last-child {
+	border-right: none;
+}
+.wpcal-day-cell.wpcal-other-month {
+	background: #fbfbfc;
+	color: #a7aaad;
+}
+.wpcal-day-cell.wpcal-today {
+	background: var(--wpcal-today-bg);
+}
+.wpcal-day-header {
+	text-align: right;
+	margin-bottom: 4px;
+}
+.wpcal-day-number {
+	font-size: 12px;
+	font-weight: 600;
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	line-height: 22px;
+	text-align: center;
+	border-radius: 50%;
+}
+.wpcal-today .wpcal-day-number {
+	background: var(--wpcal-primary);
+	color: #fff;
+}
+.wpcal-day-events {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	max-height: 80px;
+	overflow-y: auto;
+}
+.wpcal-event-chip {
+	font-size: 11px;
+	background: #eef5fa;
+	border-left: 3px solid var(--wpcal-primary);
+	padding: 2px 4px;
+	border-radius: 3px;
+	line-height: 1.3;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.wpcal-event-chip a {
+	color: var(--wpcal-text-main);
+	text-decoration: none;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.wpcal-event-chip:hover {
+	background: #e2eff8;
+}
+.wpcal-event-chip.wpcal-status-cancelled {
+	background: #fcf0f0;
+	border-left-color: var(--wpcal-cancelled);
+}
+.wpcal-badge-cancelled {
+	color: var(--wpcal-cancelled);
+	font-size: 10px;
+	font-weight: 600;
+}
+
+/* Week View */
+.wpcal-week-columns {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	background: #fff;
+	overflow: hidden;
+}
+.wpcal-week-col {
+	border-right: 1px solid var(--wpcal-border-color);
+	padding: 10px;
+	min-height: 250px;
+}
+.wpcal-week-col:last-child {
+	border-right: none;
+}
+.wpcal-week-col.wpcal-today {
+	background: var(--wpcal-today-bg);
+}
+.wpcal-week-col-header {
+	text-align: center;
+	border-bottom: 1px solid var(--wpcal-border-color);
+	padding-bottom: 8px;
+	margin-bottom: 10px;
+}
+.wpcal-week-wday {
+	display: block;
+	font-size: 12px;
+	color: var(--wpcal-text-muted);
+	font-weight: 600;
+}
+.wpcal-week-daynum {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: 700;
+	margin-top: 2px;
+}
+.wpcal-card-mini {
+	background: #f6f7f7;
+	border-left: 3px solid var(--wpcal-primary);
+	padding: 6px;
+	border-radius: 4px;
+	margin-bottom: 8px;
+	font-size: 12px;
+}
+.wpcal-card-mini a {
+	color: inherit;
+	text-decoration: none;
+}
+.wpcal-card-mini:hover {
+	background: #ebebeb;
+}
+.wpcal-card-time {
+	display: block;
+	font-size: 10px;
+	color: var(--wpcal-text-muted);
+	font-weight: 600;
+}
+
+/* Day View */
+.wpcal-day-schedule {
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	background: #fff;
+	padding: 18px;
+}
+.wpcal-day-item {
+	display: flex;
+	gap: 16px;
+	padding: 14px 0;
+	border-bottom: 1px solid var(--wpcal-border-color);
+}
+.wpcal-day-item:last-child {
+	border-bottom: none;
+}
+.wpcal-day-time-badge {
+	width: 140px;
+	font-weight: 600;
+	font-size: 13px;
+	color: var(--wpcal-primary);
+}
+.wpcal-day-content {
+	flex: 1;
+}
+.wpcal-event-heading {
+	margin: 0 0 6px;
+	font-size: 16px;
+}
+.wpcal-event-heading a {
+	text-decoration: none;
+	color: var(--wpcal-text-main);
+}
+.wpcal-event-heading a:hover {
+	color: var(--wpcal-primary);
+}
+
+/* List View */
+.wpcal-filter-bar {
+	margin-bottom: 16px;
+}
+.wpcal-filter-form {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+}
+.wpcal-filter-form input[type="text"] {
+	padding: 7px 12px;
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	font-size: 13px;
+	width: 250px;
+}
+.wpcal-list-items {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+.wpcal-list-item {
+	display: flex;
+	background: #fff;
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: var(--wpcal-radius);
+	padding: 14px;
+	align-items: center;
+	gap: 18px;
+	transition: box-shadow 0.2s ease;
+}
+.wpcal-list-item:hover {
+	box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.wpcal-item-date-col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 54px;
+	height: 54px;
+	background: var(--wpcal-bg-light);
+	border-radius: 6px;
+	text-align: center;
+}
+.wpcal-item-month {
+	font-size: 10px;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--wpcal-primary);
+}
+.wpcal-item-day {
+	font-size: 18px;
+	font-weight: 800;
+	line-height: 1;
+}
+.wpcal-item-details-col {
+	flex: 1;
+}
+.wpcal-item-title {
+	margin: 2px 0 6px;
+	font-size: 17px;
+}
+.wpcal-item-title a {
+	color: var(--wpcal-text-main);
+	text-decoration: none;
+}
+.wpcal-item-title a:hover {
+	color: var(--wpcal-primary);
+}
+.wpcal-item-time {
+	font-size: 12px;
+	color: var(--wpcal-text-muted);
+	font-weight: 500;
+}
+.wpcal-pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+/* Single Event Card Styles */
+.wpcal-single-event-card {
+	background: #fff;
+	border: 1px solid var(--wpcal-border-color);
+	border-radius: 8px;
+	padding: 24px;
+	margin-bottom: 24px;
+	box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.wpcal-alert {
+	padding: 12px 16px;
+	border-radius: 6px;
+	margin-bottom: 18px;
+	font-size: 14px;
+}
+.wpcal-alert-cancelled {
+	background: #fcf0f0;
+	border: 1px solid #f8b4b4;
+	color: var(--wpcal-cancelled);
+}
+.wpcal-alert-postponed {
+	background: #fef8ee;
+	border: 1px solid #f9d8a5;
+	color: #996800;
+}
+.wpcal-meta-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 16px;
+	background: var(--wpcal-bg-light);
+	border-radius: 6px;
+	padding: 16px;
+	margin-bottom: 18px;
+}
+.wpcal-meta-item {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+}
+.wpcal-meta-icon {
+	font-size: 22px;
+	line-height: 1;
+}
+.wpcal-meta-body {
+	display: flex;
+	flex-direction: column;
+}
+.wpcal-meta-label {
+	font-size: 11px;
+	text-transform: uppercase;
+	color: var(--wpcal-text-muted);
+	font-weight: 700;
+}
+.wpcal-meta-val {
+	font-size: 14px;
+	color: var(--wpcal-text-main);
+	margin-top: 2px;
+}
+.wpcal-meta-sub {
+	font-size: 12px;
+	color: var(--wpcal-text-muted);
+	margin-top: 3px;
+}
+.wpcal-actions-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+.wpcal-btn-outline {
+	background: #fff;
+	border: 1px solid var(--wpcal-primary);
+	color: var(--wpcal-primary);
+}
+.wpcal-btn-outline:hover {
+	background: var(--wpcal-primary);
+	color: #fff;
+}
+.wpcal-section-panel {
+	border-top: 1px solid var(--wpcal-border-color);
+	padding-top: 18px;
+	margin-top: 18px;
+}
+.wpcal-section-title {
+	font-size: 16px;
+	font-weight: 700;
+	margin: 0 0 12px;
+}
+.wpcal-badge {
+	display: inline-block;
+	background: #e2e4e7;
+	color: #3c434a;
+	padding: 2px 6px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 600;
+}
+.wpcal-badge-online {
+	background: #e7f5fb;
+	color: #0073aa;
+}
+
+/* Upcoming Events List Widget */
+.wpcal-upcoming-widget {
+	font-size: 14px;
+}
+.wpcal-upcoming-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.wpcal-upcoming-item {
+	padding: 10px 0;
+	border-bottom: 1px solid var(--wpcal-border-color);
+}
+.wpcal-upcoming-item:last-child {
+	border-bottom: none;
+}
+.wpcal-upcoming-link {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+.wpcal-upcoming-link:hover .wpcal-upcoming-title {
+	color: var(--wpcal-primary);
+}
+.wpcal-upcoming-date {
+	display: block;
+	font-size: 11px;
+	font-weight: 700;
+	color: var(--wpcal-primary);
+	text-transform: uppercase;
+}
+.wpcal-upcoming-title {
+	display: block;
+	font-size: 14px;
+	margin: 2px 0;
+}
+.wpcal-upcoming-time {
+	display: block;
+	font-size: 12px;
+	color: var(--wpcal-text-muted);
+}
+
+/* RTL Support */
+[dir="rtl"] .wpcal-month-table th,
+[dir="rtl"] .wpcal-day-cell {
+	border-right: none;
+	border-left: 1px solid var(--wpcal-border-color);
+}
+[dir="rtl"] .wpcal-month-table th:last-child,
+[dir="rtl"] .wpcal-day-cell:last-child {
+	border-left: none;
+}
+[dir="rtl"] .wpcal-event-chip {
+	border-left: none;
+	border-right: 3px solid var(--wpcal-primary);
+}
+[dir="rtl"] .wpcal-event-chip.wpcal-status-cancelled {
+	border-right-color: var(--wpcal-cancelled);
+}
+
+/* Responsive Mobile Rules */
+@media (max-width: 768px) {
+	.wpcal-month-table th .wpcal-th-short {
+		font-size: 11px;
+	}
+	.wpcal-day-cell {
+		height: 70px;
+		padding: 3px;
+	}
+	.wpcal-event-time {
+		display: none;
+	}
+	.wpcal-week-columns {
+		grid-template-columns: 1fr;
+	}
+	.wpcal-week-col {
+		border-right: none;
+		border-bottom: 1px solid var(--wpcal-border-color);
+		min-height: auto;
+	}
+	.wpcal-week-col:last-child {
+		border-bottom: none;
+	}
+	.wpcal-day-item {
+		flex-direction: column;
+		gap: 6px;
+	}
+	.wpcal-day-time-badge {
+		width: 100%;
+	}
+	.wpcal-list-item {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+	}
+}

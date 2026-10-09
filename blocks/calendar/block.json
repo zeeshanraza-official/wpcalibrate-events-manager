@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wpcalibrate/calendar",
+	"version": "1.0.0",
+	"title": "WPCalibrate Calendar",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Display the interactive WPCalibrate event calendar with Month, Week, Day, and List views.",
+	"keywords": [ "event", "calendar", "schedule", "wpcalibrate" ],
+	"attributes": {
+		"view": {
+			"type": "string",
+			"default": "month"
+		},
+		"category": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"textdomain": "wpcalibrate-events-manager",
+	"editorScript": "wpcal-blocks-js",
+	"style": "wpcal-calendar-css"
+}

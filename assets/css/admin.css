@@ -1,0 +1,53 @@
+/**
+ * WPCalibrate Events Manager - Admin Styles
+ */
+.wpcal-settings-wrap .nav-tab-wrapper {
+	border-bottom: 1px solid #c3c4c7;
+}
+
+.wpcal-settings-wrap .nav-tab-active {
+	background: #fff;
+	border-bottom-color: #fff;
+	color: #1d2327;
+}
+
+.wpcal-badge-info {
+	background: #e7f5fb;
+	color: #0073aa;
+	padding: 4px 10px;
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+/* Metabox Styling */
+.wpcal-metabox-wrapper {
+	margin-top: 8px;
+}
+
+.wpcal-form-row {
+	margin-bottom: 15px;
+}
+
+.wpcal-form-row:last-child {
+	margin-bottom: 0;
+}
+
+/* Top-level menu icon sizing and brightness to match WordPress dashboard icons */
+#adminmenu .toplevel_page_wpcalibrate .wp-menu-image img {
+	max-width: 20px;
+	max-height: 20px;
+	padding-top: 7px;
+	opacity: 1 !important;
+	filter: none !important;
+	-webkit-filter: none !important;
+	transition: opacity 0.15s ease-in-out, filter 0.15s ease-in-out;
+}
+
+#adminmenu .toplevel_page_wpcalibrate:hover .wp-menu-image img,
+#adminmenu .toplevel_page_wpcalibrate.wp-has-current-submenu .wp-menu-image img,
+#adminmenu .toplevel_page_wpcalibrate.current .wp-menu-image img {
+	opacity: 1 !important;
+	filter: brightness(1) !important;
+}
